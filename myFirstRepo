@@ -1,0 +1,90 @@
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct Poly
+{
+	int coef;
+	int exp;
+	struct Poly *next;
+}poly;
+poly * create(int,int);
+void createpoly(int ,int,poly **);
+poly * addpoly(poly **,poly **);
+void disp(poly *);
+void main()
+{       poly *start1;poly *start2;poly *result;
+		printf("\n Polynomial " );
+	    printf("\n First");
+		createpoly(&start1);
+	    printf("\n Second");
+	    createpoly(&start2);
+	    result=addpoly(poly *s1,poly *s2);
+		disp(poly *result);
+}
+poly * create(int coefs,int exps)
+{
+	poly *newnode;
+	newnode=(poly *)malloc(sizeof(poly));
+	newnode->coef=coefs;
+	newnode->exp=exps;
+	newnode->next=NULL;
+    return newnode;
+}
+void createpoly(poly **start)
+{   
+    poly *node;
+    int coefs, exps,n;
+    
+	printf("\n Enter the number of terms you want in the polynomial:");
+	scanf("%d",&n);
+	    for(i=1;i<=n;i++)
+	{
+		printf("\n Enter the coeffcient, exponent of the term:");
+	    scanf("%d%d",&coefs,&exps);
+	    node=create(coefs,exps);
+        if(*start==NULL)
+        {
+    	  *start=node;
+	    }
+		else
+		{
+		  node->next=*start;
+		  *start=node;
+       	}
+   }  
+}
+//poly * addpoly(poly **s1,poly **s2)
+//{  poly *p=s1;
+ //  poly *q=s2;
+//   poly *res;
+//	if(p->exp>q->exp)
+//	{
+	//	res->coeff=p->coeff;
+//	}
+//	else
+//	{
+//		if(p->exp<q->exp)
+//		{
+//			
+//		}
+//	}
+//}
+
+
+
+
+
+
+
+
+
+
+void disp(poly *result)
+{
+	poly *p;
+	for(p=result;p!=NULL;p=p->next)
+	printf("%dx^%d+",p->coef,p->exp);
+	printf("\b");
+}
+
+
+
